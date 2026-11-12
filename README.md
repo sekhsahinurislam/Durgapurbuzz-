@@ -2,26 +2,31 @@
 
 বাংলা সংবাদপত্র-স্টাইলের responsive news web app. Vite + React.
 
-## চালানোর নিয়ম
+## লোকাল কম্পিউটারে চালানো
 1. Node.js 18+ ইনস্টল করুন।
 2. এই ফোল্ডারে terminal খুলুন।
 3. `npm install`
 4. `npm run dev`
-5. ব্রাউজারে Vite যে local URL দেখাবে সেটি খুলুন।
 
-## GitHub-এ আপলোড
-GitHub-এ নতুন repository তৈরি করে এই প্রজেক্টের সব ফাইল push করুন। GitHub Pages-এর বদলে Vercel/Netlify-তে deploy করা সহজ:
-- Vercel: Import Git Repository → Framework Vite → Build `npm run build` → Output `dist`
-- Netlify: Build command `npm run build`, Publish directory `dist`
+## GitHub Pages-এ প্রকাশ (এই repository-এর জন্য ঠিক করা)
+এই প্রজেক্টে `vite.config.js`-এ `base: '/Durgapurbuzz-/'` সেট করা আছে এবং `.github/workflows/deploy.yml` যোগ করা হয়েছে।
+
+1. ZIP extract করুন।
+2. সব ফাইল ও `.github` hidden folder-সহ আপনার GitHub repository `Durgapurbuzz-`-এর `main` branch-এ upload/commit করুন। আগের ফাইল replace করুন।
+3. GitHub repository → **Settings → Pages** খুলুন।
+4. **Build and deployment → Source** থেকে **GitHub Actions** নির্বাচন করুন।
+5. উপরের **Actions** tab-এ গিয়ে workflow শেষ হওয়া পর্যন্ত অপেক্ষা করুন। সবুজ check হলে deploy সম্পূর্ণ।
+6. সাইটের URL হবে: `https://sekhsahinurislam.github.io/Durgapurbuzz-/`
+
+প্রতিবার `main` branch-এ নতুন commit push করলে সাইট স্বয়ংক্রিয়ভাবে build ও deploy হবে।
 
 ## Demo Admin
 ওয়েবসাইটের উপরের ডানদিকে **Admin Login** চাপুন। এটি আপাতত demo panel; authentication নেই। খবর যোগ, edit, delete করলে browser-এর LocalStorage-এ থাকবে। অন্য ডিভাইসে দেখা যাবে না এবং browser data clear করলে মুছে যেতে পারে।
 
 ## Firebase পরবর্তী ধাপ
-Firebase যুক্ত করার সময়:
 - Firebase Authentication: Admin sign-in
 - Cloud Firestore: news collection, published/draft status
 - Firebase Storage: news images
 - Firestore Security Rules: কেবল অনুমোদিত admin create/update/delete করতে পারবে; public শুধু published news পড়বে।
 
-**গুরুত্বপূর্ণ:** বর্তমান Admin Panel-এ কোনো নিরাপত্তা নেই। লাইভে প্রকাশের আগে Firebase Authentication ও Security Rules অবশ্যই যোগ করতে হবে। Demo news-এ নমুনা কনটেন্ট ব্যবহার করা হয়েছে; বাস্তব খবর হিসেবে প্রকাশ করবেন না।
+**নিরাপত্তা:** বর্তমান Admin Panel-এ কোনো পাসওয়ার্ড বা access control নেই। লাইভে প্রকাশের আগে Firebase Authentication ও Security Rules অবশ্যই যোগ করতে হবে। Demo news-এর নমুনা কনটেন্ট বাস্তব খবর হিসেবে প্রকাশ করবেন না।
